@@ -1,0 +1,7 @@
+.conda
+
+# Ignore everything in the data folder, because it will be downloaded
+# by `torchaudio` in the notebook. But keep the actual folder itself,
+# which is done by keeping the `data/.gitkeep` file.
+data/*
+!data/.gitkeep
