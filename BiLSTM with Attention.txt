@@ -1,0 +1,213 @@
+SpeechRecognitionModel(
+  (cnn): Conv2d(1, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (cnn_layers): Sequential(
+    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (4): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (5): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (fully_connected): Linear(in_features=2048, out_features=512, bias=True)
+  (birnn_layers): Sequential(
+    (0): BidirectionalLSTM(
+      (BiLSTM): LSTM(512, 512, batch_first=True, bidirectional=True)
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (1): BidirectionalLSTM(
+      (BiLSTM): LSTM(1024, 512, bidirectional=True)
+      (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (2): BidirectionalLSTM(
+      (BiLSTM): LSTM(1024, 512, bidirectional=True)
+      (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (3): BidirectionalLSTM(
+      (BiLSTM): LSTM(1024, 512, bidirectional=True)
+      (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (4): BidirectionalLSTM(
+      (BiLSTM): LSTM(1024, 512, bidirectional=True)
+      (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+  )
+  (classifier): Sequential(
+    (0): Linear(in_features=1024, out_features=512, bias=True)
+    (1): GELU(approximate='none')
+    (2): Dropout(p=0.1, inplace=False)
+    (3): Linear(in_features=512, out_features=29, bias=True)
+  )
+  (attention): MultiHeadAttention(
+    (q_linear): Linear(in_features=1024, out_features=1024, bias=True)
+    (v_linear): Linear(in_features=1024, out_features=1024, bias=True)
+    (k_linear): Linear(in_features=1024, out_features=1024, bias=True)
+    (dropout): Dropout(p=0.1, inplace=False)
+    (out_linear): Linear(in_features=1024, out_features=1024, bias=True)
+  )
+)
+Num Model Parameters 35253277
+Train Epoch: 1 [0/1000 (0%)]	Loss: 11.008758
+Train Epoch: 1 [100/1000 (10%)]	Loss: 9.739862
+Train Epoch: 1 [200/1000 (20%)]	Loss: 4.122386
+Train Epoch: 1 [300/1000 (30%)]	Loss: 3.983225
+Train Epoch: 1 [400/1000 (40%)]	Loss: 3.141790
+Train Epoch: 1 [500/1000 (50%)]	Loss: 3.097229
+Train Epoch: 1 [600/1000 (60%)]	Loss: 3.147390
+Train Epoch: 1 [700/1000 (70%)]	Loss: 3.024005
+Train Epoch: 1 [800/1000 (80%)]	Loss: 2.968089
+Train Epoch: 1 [900/1000 (90%)]	Loss: 3.003143
+
+evaluating...
+Test set:
+Average loss: 3.0063
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 2 [0/1000 (0%)]	Loss: 3.161959
+Train Epoch: 2 [100/1000 (10%)]	Loss: 3.079580
+Train Epoch: 2 [200/1000 (20%)]	Loss: 2.947157
+Train Epoch: 2 [300/1000 (30%)]	Loss: 2.989896
+Train Epoch: 2 [400/1000 (40%)]	Loss: 2.952025
+Train Epoch: 2 [500/1000 (50%)]	Loss: 3.027679
+Train Epoch: 2 [600/1000 (60%)]	Loss: 3.000519
+Train Epoch: 2 [700/1000 (70%)]	Loss: 2.977037
+Train Epoch: 2 [800/1000 (80%)]	Loss: 3.030906
+Train Epoch: 2 [900/1000 (90%)]	Loss: 2.962371
+
+evaluating...
+Test set:
+Average loss: 2.9952
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 3 [0/1000 (0%)]	Loss: 2.917401
+Train Epoch: 3 [100/1000 (10%)]	Loss: 3.007140
+Train Epoch: 3 [200/1000 (20%)]	Loss: 2.963048
+Train Epoch: 3 [300/1000 (30%)]	Loss: 2.972224
+Train Epoch: 3 [400/1000 (40%)]	Loss: 3.044560
+Train Epoch: 3 [500/1000 (50%)]	Loss: 3.194532
+Train Epoch: 3 [600/1000 (60%)]	Loss: 2.952125
+Train Epoch: 3 [700/1000 (70%)]	Loss: 2.988790
+Train Epoch: 3 [800/1000 (80%)]	Loss: 3.008691
+Train Epoch: 3 [900/1000 (90%)]	Loss: 2.978075
+
+evaluating...
+Test set:
+Average loss: 3.0049
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 4 [0/1000 (0%)]	Loss: 2.989902
+Train Epoch: 4 [100/1000 (10%)]	Loss: 2.995648
+Train Epoch: 4 [200/1000 (20%)]	Loss: 2.997780
+Train Epoch: 4 [300/1000 (30%)]	Loss: 3.011825
+Train Epoch: 4 [400/1000 (40%)]	Loss: 3.219880
+Train Epoch: 4 [500/1000 (50%)]	Loss: 3.060899
+Train Epoch: 4 [600/1000 (60%)]	Loss: 2.933500
+Train Epoch: 4 [700/1000 (70%)]	Loss: 3.004854
+Train Epoch: 4 [800/1000 (80%)]	Loss: 2.957837
+Train Epoch: 4 [900/1000 (90%)]	Loss: 2.959626
+
+evaluating...
+Test set:
+Average loss: 2.9945
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 5 [0/1000 (0%)]	Loss: 2.931017
+Train Epoch: 5 [100/1000 (10%)]	Loss: 2.953701
+Train Epoch: 5 [200/1000 (20%)]	Loss: 2.961591
+Train Epoch: 5 [300/1000 (30%)]	Loss: 2.994304
+Train Epoch: 5 [400/1000 (40%)]	Loss: 2.983181
+Train Epoch: 5 [500/1000 (50%)]	Loss: 3.181697
+Train Epoch: 5 [600/1000 (60%)]	Loss: 3.027920
+Train Epoch: 5 [700/1000 (70%)]	Loss: 2.944936
+Train Epoch: 5 [800/1000 (80%)]	Loss: 3.020795
+Train Epoch: 5 [900/1000 (90%)]	Loss: 3.002409
+
+evaluating...
+Test set:
+Average loss: 2.9933
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 6 [0/1000 (0%)]	Loss: 2.996623
+Train Epoch: 6 [100/1000 (10%)]	Loss: 3.108889
+Train Epoch: 6 [200/1000 (20%)]	Loss: 3.097912
+Train Epoch: 6 [300/1000 (30%)]	Loss: 2.960378
+Train Epoch: 6 [400/1000 (40%)]	Loss: 3.004444
+Train Epoch: 6 [500/1000 (50%)]	Loss: 2.973408
+Train Epoch: 6 [600/1000 (60%)]	Loss: 2.936783
+Train Epoch: 6 [700/1000 (70%)]	Loss: 2.944075
+Train Epoch: 6 [800/1000 (80%)]	Loss: 3.026556
+Train Epoch: 6 [900/1000 (90%)]	Loss: 3.012001
+
+evaluating...
+Test set:
+Average loss: 2.9936
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 7 [0/1000 (0%)]	Loss: 2.959794
+Train Epoch: 7 [100/1000 (10%)]	Loss: 3.008209
+Train Epoch: 7 [200/1000 (20%)]	Loss: 2.955650
+Train Epoch: 7 [300/1000 (30%)]	Loss: 3.017349
+Train Epoch: 7 [400/1000 (40%)]	Loss: 2.989015
+Train Epoch: 7 [500/1000 (50%)]	Loss: 3.041019
+Train Epoch: 7 [600/1000 (60%)]	Loss: 2.981583
+Train Epoch: 7 [700/1000 (70%)]	Loss: 2.992678
+Train Epoch: 7 [800/1000 (80%)]	Loss: 2.941570
+Train Epoch: 7 [900/1000 (90%)]	Loss: 2.976635
+
+evaluating...
+Test set:
+Average loss: 2.9921
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 8 [0/1000 (0%)]	Loss: 2.993486
+Train Epoch: 8 [100/1000 (10%)]	Loss: 2.971855
+Train Epoch: 8 [200/1000 (20%)]	Loss: 2.957182
+Train Epoch: 8 [300/1000 (30%)]	Loss: 2.957523
+Train Epoch: 8 [400/1000 (40%)]	Loss: 2.951839
+Train Epoch: 8 [500/1000 (50%)]	Loss: 2.990341
+Train Epoch: 8 [600/1000 (60%)]	Loss: 2.972941
+Train Epoch: 8 [700/1000 (70%)]	Loss: 2.943749
+Train Epoch: 8 [800/1000 (80%)]	Loss: 2.946781
+Train Epoch: 8 [900/1000 (90%)]	Loss: 3.056517
+
+evaluating...
+Test set:
+Average loss: 2.9920
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 9 [0/1000 (0%)]	Loss: 2.978645
+Train Epoch: 9 [100/1000 (10%)]	Loss: 2.955420
+Train Epoch: 9 [200/1000 (20%)]	Loss: 2.956952
+Train Epoch: 9 [300/1000 (30%)]	Loss: 2.917872
+Train Epoch: 9 [400/1000 (40%)]	Loss: 3.025722
+Train Epoch: 9 [500/1000 (50%)]	Loss: 2.948323
+Train Epoch: 9 [600/1000 (60%)]	Loss: 2.984668
+Train Epoch: 9 [700/1000 (70%)]	Loss: 2.994177
+Train Epoch: 9 [800/1000 (80%)]	Loss: 2.975501
+Train Epoch: 9 [900/1000 (90%)]	Loss: 2.982675
+
+evaluating...
+Test set:
+Average loss: 2.9917
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
+Train Epoch: 10 [0/1000 (0%)]	Loss: 2.926444
+Train Epoch: 10 [100/1000 (10%)]	Loss: 2.975417
+Train Epoch: 10 [200/1000 (20%)]	Loss: 2.958332
+Train Epoch: 10 [300/1000 (30%)]	Loss: 2.984347
+Train Epoch: 10 [400/1000 (40%)]	Loss: 2.925782
+Train Epoch: 10 [500/1000 (50%)]	Loss: 2.964215
+Train Epoch: 10 [600/1000 (60%)]	Loss: 2.948063
+Train Epoch: 10 [700/1000 (70%)]	Loss: 2.959315
+Train Epoch: 10 [800/1000 (80%)]	Loss: 2.982751
+Train Epoch: 10 [900/1000 (90%)]	Loss: 2.931071
+
+evaluating...
+Test set:
+Average loss: 2.9890
+Average character edit distance: 98.625000
+Average word edit distance: 18.2300
